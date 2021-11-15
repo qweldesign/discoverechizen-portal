@@ -165,10 +165,10 @@
 .calendar {
   width: 100%;
   padding-top: .75rem;
-  background: radial-gradient(rgba(themeColor('primary-light'), .3), rgba(themeColor('lightest'), .3));
+  background: url(./assets/logo.svg) no-repeat 50% 50%, radial-gradient(rgba(themeColor('primary-light'), .3), rgba(themeColor('lightest'), .3));
 
   &.--editMode {
-    background: rgba(128, 255, 128, .3);
+    background: url(./assets/logo.svg) no-repeat 50% 50%, rgba(128, 255, 128, .3);
   }
 
   &__control {
