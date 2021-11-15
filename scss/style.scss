@@ -110,9 +110,13 @@
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 
-  &__caption {
-    font-size: 1rem; 
+  &__header {
     text-align: center;
+  }
+
+  &__caption {
+    display: inline-block;
+    font-size: 1rem; 
   }
 
   &__main {
@@ -142,10 +146,24 @@
   }
 }
 
+.control {
+  display: inline-block;
+
+  .select, .mode {
+    display: inline-block;
+    margin: 0 .75rem;
+
+  }
+}
+
 .calendar {
   width: 100%;
   padding-top: .75rem;
   background: radial-gradient(rgba(themeColor('primary-light'), .3), rgba(themeColor('lightest'), .3));
+
+  &.--editMode {
+    background: rgba(128, 255, 128, .3);
+  }
 
   &__control {
     display: flex;

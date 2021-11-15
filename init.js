@@ -4,6 +4,6 @@
  * Location: Fukui, Japan
  */
 
-import Calendar from './modules/calendar.js';
+import EventCalendar from './modules/eventCalendar.js';
 
-new Calendar();
+new EventCalendar();

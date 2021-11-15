@@ -23,7 +23,17 @@
             </ul>
           </nav>
           <div class="schedule">
-            <h3 class="schedule__caption">予約状況</h3>
+            <div class="schedule__header">
+              <h3 class="schedule__caption">予約状況</h3>
+              <div class="control">
+                <select id="select" class="select" name="select">
+                </select>
+                <select id="mode" class="mode" name="mode">
+                  <option value="0" selected>閲覧</option>
+                  <option value="1">編集</option>
+                </select>
+              </div>
+            </div>
             <div class="schedule__main">
               <div id="calendar" class="calendar">
                 <div class="calendar__control">

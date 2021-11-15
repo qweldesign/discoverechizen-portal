@@ -387,9 +387,13 @@ button, [type="button"], [type="reset"], [type="submit"] {
   }
 }
 
-.schedule__caption {
-  font-size: 1rem;
+.schedule__header {
   text-align: center;
+}
+
+.schedule__caption {
+  display: inline-block;
+  font-size: 1rem;
 }
 
 .schedule__main {
@@ -452,10 +456,23 @@ button, [type="button"], [type="reset"], [type="submit"] {
   opacity: 1;
 }
 
+.control {
+  display: inline-block;
+}
+
+.control .select, .control .mode {
+  display: inline-block;
+  margin: 0 .75rem;
+}
+
 .calendar {
   width: 100%;
   padding-top: .75rem;
   background: radial-gradient(rgba(128, 223, 255, 0.3), rgba(255, 255, 255, 0.3));
+}
+
+.calendar.--editMode {
+  background: rgba(128, 255, 128, 0.3);
 }
 
 .calendar__control {
