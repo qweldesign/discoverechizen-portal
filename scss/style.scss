@@ -224,6 +224,16 @@
       &[data-state="4"] {
         background: linear-gradient(-45deg, rgba(128, 255, 128, .7) 50%, rgba(255, 128, 255, .7) 51%);
       }
+
+      span {
+        opacity: .85;
+      }
+
+      a {
+        font-weight: 700;
+        text-decoration: underline;
+        opacity: 1;
+      }
     }
   }
 }

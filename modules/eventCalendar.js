@@ -29,6 +29,17 @@ export default class EventCalendar extends Calendar {
     this._status.forEach((dt) => {
       if (date === dt.date && (item - 0) === (dt.item - 0)) elem.dataset.state = dt.state;
     });
+
+    // 予定のリンクを挿入 (期限を設定済みのカードのみ)
+    this._options.data.forEach((dt) => {
+      if (dt.due) {
+        const cardDate = dt.due.slice(0, 10);
+        if (date === cardDate) {
+          // 予定
+          elem.innerHTML = `<a href="${dt.shortUrl}" target="_blank" title="${dt.name}">${day}</a>`;
+        }
+      }
+    });
   }
 
   _handleEvents() {
@@ -76,7 +87,12 @@ export default class EventCalendar extends Calendar {
     // 編集モード時のみ受付
     if (!(this._mode.value - 0)) return;
 
+    // aタグの操作を受付停止
     const target = event.target;
+    if (target.getAttribute('href')) {
+      event.preventDefault();
+      return;
+    }
 
     if (target.dataset.date && target.dataset.item && target.dataset.state) {
       let state = target.dataset.state;

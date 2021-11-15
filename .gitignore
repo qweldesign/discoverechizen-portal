@@ -1,0 +1,9 @@
+# App
+config.js
+
+# VS code
+.vscode/
+
+# Node_modules
+node_modules/
+package-lock.json
