@@ -149,6 +149,12 @@
 .control {
   display: inline-block;
 
+  @at-root .--calendar & {
+    display: block;
+    width: 100%;
+    text-align: right;
+  }
+
   .select, .mode {
     display: inline-block;
     margin: 0 .75rem;
@@ -181,6 +187,13 @@
     text-align: center;
   }
 
+  &__viewWrap {
+    width: 100%;
+    min-height: 30rem;
+    padding: 0 1.5rem;
+    overflow-x: scroll;
+  }
+
   &__view {
     margin: 0 auto 1.5rem;
 
@@ -193,18 +206,11 @@
     }
 
     th, td {
-      width: 60px;
-      height: 45px;
       border-right: 1px solid themeColor("dark");
       text-align: center;
 
       &:first-child {
         border-left: 1px solid themeColor("dark");
-        color: red;
-      }
-  
-      &:last-child {
-        color: blue;
       }
     }
 
@@ -233,6 +239,45 @@
         font-weight: 700;
         text-decoration: underline;
         opacity: 1;
+      }
+    }
+
+    &.--small {
+      min-height: 18rem;
+
+      th, td {
+        width: 60px;
+        height: 45px;
+
+        &:first-child {
+          color: red;
+        }
+    
+        &:last-child {
+          color: blue;
+        }
+      }
+    }
+
+    &.--large {
+      width: 72rem;
+      @include smallText();
+
+      th, td {
+        width: 30px;
+        height: 30px;
+
+        &:first-child {
+          width: 12rem;
+        }
+
+        &.--sun {
+          color: red;
+        }
+
+        &.--sat {
+          color: blue;
+        }
       }
     }
   }
