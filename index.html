@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>トップ | 教育旅行ポータル | 越前海岸盛り上げ隊</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="container">
+        <h1 class="title">越前海岸盛り上げ隊教育旅行ポータル</h1>
+        <main class="main">
+          <nav class="nav">
+            <ul class="nav__menu">
+              <li class="nav__menuItem"><a href="./about/">盛り上げ隊とは</a></li>
+              <li class="nav__menuItem"><a href="./main/">教育旅行について</a></li>
+              <li class="nav__menuItem"><a href="#">教育旅行の実績</a></li>
+              <li class="nav__menuItem"><a href="#">体験レポート</a></li>
+              <li class="nav__menuItem"><a href="#">体験一覧</a></li>
+              <li class="nav__menuItem"><a href="#">体験概要</a></li>
+              <li class="nav__menuItem"><a href="#">エリアマップ</a></li>
+            </ul>
+          </nav>
+          <div class="schedule">
+            <h3 class="schedule__caption">予約状況</h3>
+            <div class="schedule__main">
+              <div id="calendar" class="calendar">
+                <div class="calendar__control">
+                  <a id="calendarPrev" class="calendar__prev" href="#">&lt; <span id="calendarPrevText"></span></a>
+                  <span id="calendarCurrentText"></span>
+                  <a id="calendarNext" class="calendar__next" href="#"><span id="calendarNextText"></span> &gt;</a>
+                </div>
+                <table class="calendar__view --small">
+                  <thead id="calendarHead"></thead>
+                  <tbody id="calendarBody"></tbody>
+                </table>
+            </div>
+            </div>
+            <ul class="schedule__menu">
+              <li class="schedule__menuItem"><a href="https://trello.com/b/uFRivoqz/" target="_blank">管理画面</a></li>
+              <li class="schedule__menuItem"><a href="https://www.facebook.com/messages/" target="_blank">メンバーとチャットする</a></li>
+            </ul>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="./init.js" type="module"></script>
+  </body>
+</html>

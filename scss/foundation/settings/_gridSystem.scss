@@ -1,0 +1,69 @@
+// Grid System
+
+// ルート要素にて定義
+// これを基準とした1remを、全ての寸法の基本単位とする
+$rootFontSize:     16px;
+$rootFontSizeXs:   3.84vw; // 4vw以下推奨
+
+// 基準幅 (21remまたは22.5rem推奨)
+$base:             21rem;
+$breakpointBase:   384px;
+$containerBase:    var(--container-base, #{$base});
+
+// xs: 1カラム
+// 文字サイズを流動させ、レイアウトを固定
+$containerWidthXs: $containerBase;
+
+// sm: 1〜2カラム (下層ページで、メディアと文章の使用くらいに留める)
+// コンテナ幅を拡げ、文字サイズをpxに切り替え固定
+// WordPressのブロックエディタの都合上、BPを600px以内に設置するのが望ましい
+$breakpointSm:     600px;
+$containerWidthSm: calc(#{$containerBase} * 3 / 2);
+
+// 以下、任意に定義
+// md: 1〜2カラム (カードレイアウト可能)
+$breakpointMd:     $breakpointBase * 2;
+$containerWidthMd: calc(#{$containerBase} * 2);
+
+// lg: 1〜3カラム (サイドバー設置可能)
+$breakpointLg:     $breakpointBase * 3;
+$containerWidthLg: calc(#{$containerBase} * 3);
+
+// xl: 1〜4カラム (トップページ、ランディングページ等に限る)
+$breakpointXl:     $breakpointBase * 4;
+$containerWidthXl: calc(#{$containerBase} * 4);
+
+// ブレイクポイント (以下BP)
+$breakpoints:      (
+  sm:                $breakpointSm,
+  md:                $breakpointMd,
+  lg:                $breakpointLg,
+  xl:                $breakpointXl
+);
+
+// コンテナ幅
+$containerWidths:  (
+  xs:                $containerWidthXs,
+  sm:                $containerWidthSm,
+  md:                $containerWidthMd,
+  lg:                $containerWidthLg,
+  xl:                $containerWidthXl
+);
+
+// BPの配列の接頭辞から値を返す関数
+@function breakpoint($infix: "lg") {
+  @return map-get($breakpoints, $infix);
+}
+
+// BPの配列から、引数の接頭辞以降を取り除く関数
+@function popBreakpoints($infix: "lg") {
+  @if $infix == "xl" {
+    @return $breakpoints;
+  } @else if $infix == "lg" {
+    @return map-remove($breakpoints, "xl");
+  } @else if $infix == "md" {
+    @return map-remove($breakpoints, "xl", "lg");
+  } @else if $infix == "sm" {
+    @return map-remove($breakpoints, "xl", "lg", "md");
+  }
+}
