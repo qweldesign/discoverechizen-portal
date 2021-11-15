@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>予約一覧 | 教育旅行ポータル | 越前海岸盛り上げ隊</title>
+    <link rel="stylesheet" href="../style.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="container">
+        <h1 class="title">越前海岸盛り上げ隊教育旅行ポータル</h1>
+        <ul class="subMenu">
+          <li class="subMenu__item"><a href="../">トップ</a></li>
+          <li class="subMenu__item"><a href="../calendar/">大カレンダー</a></li>
+        </ul>
+        <main class="main --reserve">
+          <ul id="report" class="report"></ul>
+          <template id="reportTemplate">
+            <li class="report__item">
+              <table class="report__info">
+                <caption>概要</caption>
+              </table>
+              <table class="report__activity">
+                <caption>体験内容</caption>
+              </table>
+              <ul class="report__note"></ul>
+            </li>
+          </template>
+        </main>
+      </div>
+    </div>
+    <script src="./init.js" type="module"></script>
+  </body>
+</html>
