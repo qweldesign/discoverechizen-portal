@@ -246,8 +246,8 @@ button, [type="button"], [type="reset"], [type="submit"] {
   font-size: 87.5%;
   line-height: 2.025;
   letter-spacing: 0.04rem;
-  -webkit-box-shadow: 1px 2px 6px #262626;
-          box-shadow: 1px 2px 6px #262626;
+  -webkit-box-shadow: 1px 2px 2px #4d4d4d;
+          box-shadow: 1px 2px 2px #4d4d4d;
   opacity: .85;
 }
 
@@ -282,8 +282,8 @@ button, [type="button"], [type="reset"], [type="submit"] {
   background: -webkit-gradient(linear, left top, left bottom, from(#00a1d6), to(#006080));
   background: linear-gradient(#00a1d6, #006080);
   line-height: 1.25;
-  -webkit-box-shadow: 1px 2px 6px #262626;
-          box-shadow: 1px 2px 6px #262626;
+  -webkit-box-shadow: 1px 2px 2px #4d4d4d;
+          box-shadow: 1px 2px 2px #4d4d4d;
   opacity: .85;
 }
 
@@ -352,8 +352,8 @@ button, [type="button"], [type="reset"], [type="submit"] {
   border-radius: 6px;
   background: -webkit-gradient(linear, left top, left bottom, from(#00a1d6), to(#006080));
   background: linear-gradient(#00a1d6, #006080);
-  -webkit-box-shadow: 1px 2px 6px #262626;
-          box-shadow: 1px 2px 6px #262626;
+  -webkit-box-shadow: 1px 2px 2px #4d4d4d;
+          box-shadow: 1px 2px 2px #4d4d4d;
   opacity: .85;
 }
 
@@ -441,8 +441,8 @@ button, [type="button"], [type="reset"], [type="submit"] {
   border-radius: 6px;
   background: -webkit-gradient(linear, left top, left bottom, from(#6bd600), to(#408000));
   background: linear-gradient(#6bd600, #408000);
-  -webkit-box-shadow: 1px 2px 6px #262626;
-          box-shadow: 1px 2px 6px #262626;
+  -webkit-box-shadow: 1px 2px 2px #4d4d4d;
+          box-shadow: 1px 2px 2px #4d4d4d;
   opacity: .85;
 }
 
@@ -537,19 +537,19 @@ button, [type="button"], [type="reset"], [type="submit"] {
 }
 
 .calendar__view td[data-state="1"] {
-  background: rgba(255, 128, 255, 0.7);
+  background: rgba(255, 128, 128, 0.5);
 }
 
 .calendar__view td[data-state="2"] {
-  background: linear-gradient(-45deg, rgba(255, 128, 255, 0.7) 50%, rgba(128, 255, 128, 0.7) 51%);
+  background: linear-gradient(-45deg, rgba(255, 128, 128, 0.5) 50%, rgba(128, 255, 128, 0.5) 51%);
 }
 
 .calendar__view td[data-state="3"] {
-  background: rgba(128, 255, 128, 0.7);
+  background: rgba(128, 255, 128, 0.5);
 }
 
 .calendar__view td[data-state="4"] {
-  background: linear-gradient(-45deg, rgba(128, 255, 128, 0.7) 50%, rgba(255, 128, 255, 0.7) 51%);
+  background: linear-gradient(-45deg, rgba(128, 255, 128, 0.5) 50%, rgba(255, 128, 128, 0.5) 51%);
 }
 
 .calendar__view td span {
@@ -572,11 +572,11 @@ button, [type="button"], [type="reset"], [type="submit"] {
 }
 
 .calendar__view.--small th:first-child, .calendar__view.--small td:first-child {
-  color: red;
+  color: #d63600;
 }
 
 .calendar__view.--small th:last-child, .calendar__view.--small td:last-child {
-  color: blue;
+  color: #00a1d6;
 }
 
 .calendar__view.--large {
@@ -596,11 +596,11 @@ button, [type="button"], [type="reset"], [type="submit"] {
 }
 
 .calendar__view.--large th.--sun, .calendar__view.--large td.--sun {
-  color: red;
+  color: #d63600;
 }
 
 .calendar__view.--large th.--sat, .calendar__view.--large td.--sat {
-  color: blue;
+  color: #00a1d6;
 }
 
 .report {

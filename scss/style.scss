@@ -51,7 +51,7 @@
     border-radius: 6px;
     background: linear-gradient(themeColor("primary"), themeColor("primary-dark"));
     @include smallText();
-    box-shadow: 1px 2px 6px themeColor("darkest");
+    box-shadow: 1px 2px 2px themeColor("darker");
     opacity: .85;
 
     &:hover {
@@ -68,7 +68,7 @@
   border-radius: 6px;
   background: linear-gradient(themeColor("primary"), themeColor("primary-dark"));
   line-height: 1.25;
-  box-shadow: 1px 2px 6px themeColor("darkest");
+  box-shadow: 1px 2px 2px themeColor("darker");
   opacity: .85;
 
   &:hover {
@@ -95,7 +95,7 @@
     width: 85%;
     border-radius: 6px;
     background: linear-gradient(themeColor("primary"), themeColor("primary-dark"));
-    box-shadow: 1px 2px 6px themeColor("darkest");
+    box-shadow: 1px 2px 2px themeColor("darker");
     opacity: .85;
 
     &:hover {
@@ -136,7 +136,7 @@
       width: 85%;
       border-radius: 6px;
       background: linear-gradient(themeColor("secondary"), themeColor("secondary-dark"));
-      box-shadow: 1px 2px 6px themeColor("darkest");
+      box-shadow: 1px 2px 2px themeColor("darker");
       opacity: .85;
 
       &:hover {
@@ -216,19 +216,19 @@
 
     td {
       &[data-state="1"] {
-        background: rgba(255, 128, 255, .7);
+        background: rgba(255, 128, 128, .5);
       }
 
       &[data-state="2"] {
-        background: linear-gradient(-45deg, rgba(255, 128, 255, .7) 50%, rgba(128, 255, 128, .7) 51%);
+        background: linear-gradient(-45deg, rgba(255, 128, 128, .5) 50%, rgba(128, 255, 128, .5) 51%);
       }
 
       &[data-state="3"] {
-        background: rgba(128, 255, 128, .7);
+        background: rgba(128, 255, 128, .5);
       }
 
       &[data-state="4"] {
-        background: linear-gradient(-45deg, rgba(128, 255, 128, .7) 50%, rgba(255, 128, 255, .7) 51%);
+        background: linear-gradient(-45deg, rgba(128, 255, 128, .5) 50%, rgba(255, 128, 128, .5) 51%);
       }
 
       span {
@@ -250,11 +250,11 @@
         height: 45px;
 
         &:first-child {
-          color: red;
+          color: themeColor('tertiary');
         }
     
         &:last-child {
-          color: blue;
+          color: themeColor('primary');
         }
       }
     }
@@ -272,11 +272,11 @@
         }
 
         &.--sun {
-          color: red;
+          color: themeColor('tertiary');
         }
 
         &.--sat {
-          color: blue;
+          color: themeColor('primary');
         }
       }
     }

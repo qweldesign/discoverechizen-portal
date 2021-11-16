@@ -8,6 +8,8 @@ $themeColors:      (
   primary-dark:      darken($primaryColor, 17%),
   secondary:         adjust-hue($primaryColor, -105deg),
   secondary-dark:    darken( adjust-hue($primaryColor, -105deg), 17%),
+  tertiary:          adjust-hue($primaryColor, -180deg),
+  tertiary-dark:     darken( adjust-hue($primaryColor, -180deg), 17%),
   lightest:          hsl(0, 0%, 100%),
   lighter:           hsl(0, 0%, 85%),
   light:             hsl(0, 0%, 70%),
