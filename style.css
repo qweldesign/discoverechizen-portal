@@ -175,7 +175,7 @@ button, [type="button"], [type="reset"], [type="submit"] {
   width: var(--container-base, 21rem);
   margin-left: auto;
   margin-right: auto;
-  border: 1.5rem solid #b3b3b3;
+  border: 1.5rem solid #d9d9d9;
   border-radius: 4.5rem;
   background: linear-gradient(-45deg, #80dfff, white, #80dfff);
 }
@@ -683,6 +683,89 @@ button, [type="button"], [type="reset"], [type="submit"] {
 
 .report__note li {
   margin: 0;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1100;
+  width: 960px;
+  height: 540px;
+  margin: auto;
+  border-radius: 3rem;
+  background-color: #000000;
+  overflow: hidden;
+  -webkit-transition: all ease-in-out .65s;
+  transition: all ease-in-out .65s;
+}
+
+.modal.--collapse {
+  width: 0;
+}
+
+.modal__inner {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  -webkit-transition: opacity ease-in-out .35s;
+  transition: opacity ease-in-out .35s;
+}
+
+.modal__inner.--hide {
+  opacity: 0;
+}
+
+.modal__inner video {
+  width: 100%;
+  height: auto;
+}
+
+.modal__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1099;
+  width: 100%;
+  height: 100vh;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.85);
+  opacity: 1;
+  -webkit-transition: opacity ease-in-out 1s;
+  transition: opacity ease-in-out 1s;
+  overflow: hidden;
+}
+
+.modal__overlay.--collapse {
+  width: 0;
+  opacity: 0;
+  -webkit-transition: none;
+  transition: none;
+}
+
+.modal__close {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 1101;
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  -webkit-transform: scaleY(1.5);
+          transform: scaleY(1.5);
+}
+
+.modal__close:hover {
+  text-decoration: none;
+}
+
+.modal__close.--collapse {
+  display: none;
 }
 
 .page {

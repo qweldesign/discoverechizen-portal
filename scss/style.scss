@@ -24,7 +24,7 @@
 
 .container {
   @include container();
-  border: 1.5rem solid themeColor("light");
+  border: 1.5rem solid themeColor("lighter");
   border-radius: 4.5rem;
   background: linear-gradient(-45deg, themeColor("primary-light"), themeColor("lightest"), themeColor("primary-light"));
 }
@@ -350,6 +350,84 @@
 
     li {
       margin: 0;
+    }
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1100;
+  width: 960px;
+  height: 540px;
+  margin: auto;
+  border-radius: 3rem;
+  background-color: #000000;
+  overflow: hidden;
+  transition: all ease-in-out .65s;
+
+  &.--collapse {
+    width: 0;
+  }
+
+  &__inner {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    transition: opacity ease-in-out .35s;
+
+    &.--hide {
+      opacity: 0;
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1099;
+    width: 100%;
+    height: 100vh;
+    margin: auto;
+    background-color: rgba(0, 0, 0, .85);
+    opacity: 1;
+    transition: opacity ease-in-out 1s;
+    overflow: hidden;
+
+    &.--collapse {
+      width: 0;
+      opacity: 0;
+      transition: none;
+    }
+  }
+
+  &__close {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 1101;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    transform: scaleY(1.5);
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    &.--collapse {
+      display: none;
     }
   }
 }

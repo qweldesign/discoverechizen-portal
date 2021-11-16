@@ -15,7 +15,7 @@
             <ul class="nav__menu">
               <li class="nav__menuItem"><a href="./about/">盛り上げ隊とは</a></li>
               <li class="nav__menuItem"><a href="./main/">教育旅行について</a></li>
-              <li class="nav__menuItem"><a href="#">教育旅行の実績</a></li>
+              <li class="nav__menuItem"><a href="#" data-toggle="modal">動画再生</a></li>
               <li class="nav__menuItem"><a href="#">体験レポート</a></li>
               <li class="nav__menuItem"><a href="#">体験一覧</a></li>
               <li class="nav__menuItem"><a href="#">体験概要</a></li>
@@ -56,6 +56,13 @@
               <li class="schedule__menuItem"><a href="https://www.facebook.com/messages/" target="_blank">メンバーとチャットする</a></li>
             </ul>
           </div>
+          <div id="modal" class="modal --collapse">
+            <div id="modalInner" class="modal__inner --hide">
+              <video id="video" src="./assets/video.mp4" controls></video>
+            </div>
+          </div>
+          <a id="modalClose" class="modal__close" href="#" data-toggle="modal">close</a>
+          <div id="modalOverlay" class="modal__overlay --collapse" data-toggle="modal"></div>
         </main>
       </div>
     </div>
