@@ -14,7 +14,9 @@ export default class Report {
   _renderTemplate(data) {
     data.forEach((dt) => {
       // 表示条件
-      if (dt.info.pop().content) {
+      const len = dt.info.length;
+      const isDisplay = (dt.info[len - 1].name) === '表示有無';
+      if (isDisplay) {
         // テンプレートからNodeを作成
         const item = document.importNode(this._template.content, true);
         this._createInfoSection(item, dt.info);
@@ -30,7 +32,7 @@ export default class Report {
     const section = item.querySelector('.report__info');
 
     // 情報タイトルと情報を順次挿入
-    const len = arr.length;
+    const len = arr.length - 1; // 表示有無は除く
     for (let i = 1; i < len; i++) {
       const tr = document.createElement('tr');
       const th = document.createElement('th');
