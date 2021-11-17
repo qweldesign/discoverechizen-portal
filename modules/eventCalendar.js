@@ -85,8 +85,8 @@ export default class EventCalendar extends Calendar {
 
     // アイテムIDをセット
     if (!item) {
-      const select = document.getElementById('select');
-      item = select.value || 1;
+      const hash = location.hash || '#1';
+      item = hash.slice(1);
     }
     elem.dataset.item = item;
 
@@ -118,13 +118,21 @@ export default class EventCalendar extends Calendar {
     // アイテム選択 (メインページのみ)
     this._select = document.getElementById('select');
     if (this._select) {
+      // ハッシュを設定
+      if (location.hash === '') location.hash = '#1';
+      // ハッシュ変更時、カレンダーを更新
+      window.addEventListener('hashchange', () => {
+        const hash = location.hash;
+        this._select.selectedIndex = hash.slice(1) - 1;
+        console.log(hash);
+        this._makeCalendar(this._year, this._month);
+      });
       // オプション挿入
       this._insertMenu();
 
-      // アイテムを変更したとき、カレンダーを更新
+      // アイテムを変更したとき、ハッシュを更新
       this._select.addEventListener('change', () => {
-        this._item = select.value;
-        this._makeCalendar(this._year, this._month);
+        location.hash = select.value;
       });
     }
 
@@ -147,6 +155,8 @@ export default class EventCalendar extends Calendar {
     items.forEach ((item) => {
       const option = document.createElement('option');
       option.setAttribute('value', item.id);
+      const hash = location.hash;
+      if (hash.slice(1) === item.id) option.setAttribute('selected', '');
       option.textContent = item.title;
       this._select.appendChild(option);
     });
