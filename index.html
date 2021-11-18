@@ -13,11 +13,11 @@
         <main class="main">
           <nav class="nav">
             <ul class="nav__menu">
-              <li class="nav__menuItem"><a href="./about/">盛り上げ隊とは</a></li>
-              <li class="nav__menuItem"><a href="./main/">教育旅行について</a></li>
-              <li class="nav__menuItem"><a href="#" data-toggle="modal">動画再生</a></li>
-              <li class="nav__menuItem"><a href="./activity/">体験一覧</a></li>
-              <li class="nav__menuItem"><a href="./report">体験レポート</a></li>
+              <li class="nav__menuItem"><a href="#" data-toggle="modal" data-target="1">盛り上げ隊とは</a></li>
+              <li class="nav__menuItem"><a href="#" data-toggle="modal" data-target="2">教育旅行について</a></li>
+              <li class="nav__menuItem"><a href="#" data-toggle="modal" data-target="3">地域動画再生</a></li>
+              <li class="nav__menuItem"><a href="#" data-toggle="modal" data-target="4">体験動画再生</a></li>
+              <li class="nav__menuItem"><a href="#" data-toggle="modal" data-target="5">体験一覧</a></li>
               <li class="nav__menuItem"><a href="./assets/studytour.pdf">体験概要</a></li>
               <li class="nav__menuItem"><a href="./assets/map.pdf">エリアマップ</a></li>
             </ul>
@@ -57,12 +57,34 @@
             </ul>
           </div>
           <div id="modal" class="modal --collapse">
-            <div id="modalInner" class="modal__inner --hide">
-              <video id="video" src="./assets/video.mp4" controls></video>
-            </div>
+            <div id="modalInner" class="modal__inner --hide"></div>
           </div>
-          <a id="modalClose" class="modal__close" href="#" data-toggle="modal">close</a>
+          <a id="modalClose" class="modal__close" href="#" data-toggle="modal"><span data-icon="ei-close" data-size="l"></span></a>
+          <a id="modalPrev" class="modal__prev" href="#" data-slide="-1"><span data-icon="ei-chevron-left" data-size="l"></span></a>
+          <a id="modalNext" class="modal__next" href="#" data-slide="1"><span data-icon="ei-chevron-right" data-size="l"></span></a>
           <div id="modalOverlay" class="modal__overlay --collapse" data-toggle="modal"></div>
+          <div id="modalContent" class="modal__content">
+            <section class="section" data-index="1">
+              <div class="section__inner">
+                <h2 class="section__heading">越前海岸盛り上げ隊って？</h2>
+                <img class="section__image --lg" src="./assets/members.jpg">
+                <p class="section__content">越前海岸盛り上げ隊は、越前海岸の「いま」をできるだけ面白くしようと奮闘する大人たちのゆるやかな集まりです。海鮮料理屋、旅館や民宿、クラゲ販売店、製粉屋、製塩所、林業家、ガラス作家、お坊さん、デザイナーやプログラマー、地域おこし協力隊など、30以上の事業者と個人が名を連ね、その時々でそれぞれにできることを差し出し合いながら、日々活動を続けています。</p>
+              </div>
+            </section>
+            <section class="section" data-index="2">
+              <div class="section__inner">
+                <h2 class="section__heading">越前海岸の学習プログラムで自由に研究しよう！</h2>
+                <img class="section__image --md" src="./assets/island.png">
+                <p class="section__content">ここで仕事をしている人は、地域の暮らしに密着して過ごしています。彼らの仕事を知ることで社会への興味、地域の色を発見し、地域の「理解と学び」につなげます。体験を通して、越前海岸で働く人々や、作家さんによる想いにぜひ触れてみてください。私たちが企画から運営、当日のお世話まですべてプランニングします。</p>
+              </div>
+            </section>
+            <section class="section" data-index="3">
+              <video src="./assets/about.mp4" controls></video>
+            </section>
+            <section class="section" data-index="4">
+              <video src="./assets/activity.mp4" controls></video>
+            </section>
+          </div>
         </main>
       </div>
     </div>

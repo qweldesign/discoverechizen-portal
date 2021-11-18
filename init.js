@@ -7,6 +7,7 @@
 import {root, cardsUrl, apiKey, token} from './config.js';
 import Modal from './modules/modal.js';
 import EventCalendar from './modules/eventCalendar.js';
+import EvilIcons from './modules/evilIcons.js';
 
 new Modal();
 
@@ -18,3 +19,5 @@ new Modal();
     data: data
   });
 })();
+
+new EvilIcons();
