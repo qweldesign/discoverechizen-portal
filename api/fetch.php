@@ -3,7 +3,7 @@
 header("Access-Control-Allow-Origin: *");
 
 // DB接続
-$file = '../status.sqlite';
+$file = '../dep.sqlite';
 $pdo = new PDO('sqlite:' . $file);
 
 // 設定
@@ -19,7 +19,7 @@ try {
     // 通常のクエリ: 年月で日にちの登録状況を問い合わせ
 
     // SELECT文発行
-    $sql = "SELECT * FROM status WHERE substr(date, 1, 7) = :date";
+    $sql = "SELECT * FROM v_status WHERE substr(date, 1, 7) = :date";
     // SQL実行
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
@@ -27,11 +27,13 @@ try {
     ]);
     $result = $stmt->fetchAll();
 
-  } else {
-    // アイテム一覧を問い合わせ
+  } else if (isset($_GET['queried'])) {
+    // マスタを問い合わせ
+
+    $queried = $_GET['queried'];
     
     // SELECT文発行
-    $sql = "SELECT * FROM items";
+    $sql = "SELECT * FROM $queried";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $result = $stmt->fetchAll();

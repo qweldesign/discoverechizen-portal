@@ -530,30 +530,37 @@ button, [type="button"], [type="reset"], [type="submit"] {
   border-left: 1px solid gray;
 }
 
-.calendar__view td[data-state="1"] {
-  background: rgba(255, 128, 128, 0.5);
-}
-
-.calendar__view td[data-state="2"] {
-  background: linear-gradient(-45deg, rgba(255, 128, 128, 0.5) 50%, rgba(128, 255, 128, 0.5) 51%);
-}
-
-.calendar__view td[data-state="3"] {
-  background: rgba(128, 255, 128, 0.5);
-}
-
-.calendar__view td[data-state="4"] {
-  background: linear-gradient(-45deg, rgba(128, 255, 128, 0.5) 50%, rgba(255, 128, 128, 0.5) 51%);
-}
-
-.calendar__view td span {
+.calendar__view th span, .calendar__view td span {
   opacity: .85;
 }
 
-.calendar__view td a {
+.calendar__view th a, .calendar__view td a {
+  color: inherit;
   font-weight: 700;
   text-decoration: underline;
   opacity: 1;
+}
+
+.calendar__view th a {
+  display: block;
+  background-color: rgba(128, 128, 128, 0.3);
+  text-decoration: none;
+}
+
+.calendar__view td[data-state="1"] {
+  background: rgba(128, 255, 128, 0.5);
+}
+
+.calendar__view td[data-state="2"] {
+  background: linear-gradient(-45deg, rgba(128, 255, 128, 0.5) 50%, rgba(255, 128, 128, 0.5) 51%);
+}
+
+.calendar__view td[data-state="3"] {
+  background: rgba(255, 128, 128, 0.5);
+}
+
+.calendar__view td[data-state="4"] {
+  background: linear-gradient(-45deg, rgba(255, 128, 128, 0.5) 50%, rgba(128, 255, 128, 0.5) 51%);
 }
 
 .calendar__view.--small {

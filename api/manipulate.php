@@ -1,6 +1,6 @@
 <?php
 // DB接続
-$file = '../status.sqlite';
+$file = '../dep.sqlite';
 $pdo = new PDO('sqlite:' . $file);
 
 // 設定
@@ -10,27 +10,9 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
 try {
-  // SELECT文で日にちとアイテムが一致するレコードの有無を確認
-  $sql = "SELECT date, item FROM status WHERE date = :date AND item = :item";
-  $stmt = $pdo->prepare($sql);
-  $stmt->execute([
-    ':date' => $_POST['date'],
-    ':item' => $_POST['item']
-  ]);
-  $result = $stmt->fetch();
-
-  if ($result) {
-    // 有り: UPDATE文
-    $sql = "UPDATE status SET state = :state WHERE date = :date AND item = :item";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([
-      ':date' => $_POST['date'],
-      ':item' => $_POST['item'],
-      ':state' => $_POST['state']
-    ]);
-  } else {
-    // 無し: INSERT文
-    $sql = "INSERT INTO status(date, item, state) VALUES (:date, :item, :state)";
+  if (isset($_POST['date']) && isset($_POST['item']) && isset($_POST['state'])) {
+    // INSERT文発行
+    $sql = "INSERT INTO t_status(date, item, state) VALUES (:date, :item, :state)";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
       ':date' => $_POST['date'],

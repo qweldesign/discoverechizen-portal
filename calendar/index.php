@@ -1,3 +1,11 @@
+<?php
+// マスターデータ取得
+include_once('../inc/functions.php');
+$file = '../dep.sqlite';
+$masterData = fetchMasters($file);
+
+?>
+
 <!doctype html>
 <html>
   <head>
@@ -38,6 +46,9 @@
         </main>
       </div>
     </div>
+    <script>
+      window.masterData = <?php echo json_encode($masterData, JSON_UNESCAPED_UNICODE); ?>
+    </script>
     <script src="./init.js" type="module"></script>
   </body>
 </html>

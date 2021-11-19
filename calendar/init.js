@@ -5,12 +5,12 @@
  */
 
 import {root, cardsUrl, apiKey, token} from '../config.js';
-import EventCalendar from '../modules/eventCalendar.js';
+import CustomCalendar from '../modules/customCalendar.js';
 
 (async () => {
   const res = await fetch(`${cardsUrl}?key=${apiKey}&token=${token}`);
   const data = await res.json();
-  new EventCalendar({
+  new CustomCalendar({
     root: root,
     data: data,
     type: 'large'

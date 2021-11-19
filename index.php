@@ -1,3 +1,11 @@
+<?php
+// マスターデータ取得
+include_once('./inc/functions.php');
+$file = './dep.sqlite';
+$masterData = fetchMasters($file);
+
+?>
+
 <!doctype html>
 <html>
   <head>
@@ -28,6 +36,9 @@
               <h3 class="schedule__caption">予約状況</h3>
               <div class="control">
                 <select id="select" class="select" name="select">
+                  <?php foreach ($masterData as $data) { ?>
+                    <option value="<?php echo $data['id']; ?>"><?php echo $data['name']; ?></option>
+                  <?php } ?>
                 </select>
                 <select id="mode" class="mode" name="mode">
                   <option value="0" selected>閲覧</option>
@@ -89,6 +100,9 @@
         </main>
       </div>
     </div>
+    <script>
+      window.masterData = <?php echo json_encode($masterData, JSON_UNESCAPED_UNICODE); ?>;
+    </script>
     <script src="./init.js" type="module"></script>
   </body>
 </html>
