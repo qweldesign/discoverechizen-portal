@@ -18,7 +18,7 @@ export default class CustomCalendar extends Calendar {
     // アイテムの選択受付
     const select = document.getElementById('select');
     if (select) {
-      // ハッシュと選択項目の初期化
+      // ハッシュと選択アイテムの初期化
       this._init(select);
 
       // アイテムを変更したとき、ハッシュを更新
@@ -44,17 +44,19 @@ export default class CustomCalendar extends Calendar {
   }
 
   _init(select) {
+    // ハッシュの初期化
     const hash = location.hash;
-    if (!hash) {
-      location.hash = '#1';
-    } else {
-      const options = select.querySelectorAll('option');
-      options.forEach((elem, i) => {
-        const val = elem.getAttribute('value');
-        if (hash.slice(1) === val) select.options[i].selected = true; 
-      });
-      
-    }
+    if (!hash)　location.hash = '1';
+
+    // 選択アイテムを追加
+    this._options.items.forEach((dt, i) => {
+      const option = document.createElement('option');
+      option.setAttribute('value', dt.id);
+      option.textContent = dt.name;
+      select.appendChild(option);
+      // 選択の初期化
+      if (hash.slice(1) === dt.id) select.options[i].selected = true;
+    });
   }
 
   _setStatus(year, month) {
@@ -63,7 +65,7 @@ export default class CustomCalendar extends Calendar {
   }
 
   _setDefaultStatus(month) {
-    const data = window.masterData;
+    const data = this._options.items;
     const elems = this._body.querySelectorAll('[data-date]');
     elems.forEach((td) => {
       // マスターデータから参照するレコードを取得
@@ -90,7 +92,7 @@ export default class CustomCalendar extends Calendar {
   }
 
   async _setEnteredStatus(year, month) {
-    const res = await fetch(`${this._options.root}api/fetch.php?year=${year}&month=${month + 1}`);
+    const res = await fetch(`${this._options.root}php/api.php?method=fetch&target=status&year=${year}&month=${month + 1}`);
     const status = await res.json();
 
     status.forEach((dt) => {
@@ -135,7 +137,7 @@ export default class CustomCalendar extends Calendar {
       postData.set('item', item);
       postData.set('state', state);
 
-      fetch(`${this._options.root}api/manipulate.php`, {
+      fetch(`${this._options.root}php/api.php?method=insert&target=status`, {
         method: 'POST',
         body: postData
       });

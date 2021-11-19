@@ -478,6 +478,96 @@
   }
 }
 
+.form {
+  width: 48rem;
+  @include form();
+
+  &__select {
+    @include row();
+
+    .form__group {
+      @include col("lg", 6);
+      @include row(flex-start);
+  
+      label {
+        @include col("lg", 4);
+      }
+  
+      select {
+        @include col("lg", 6);
+      }
+    }
+  }
+
+  &__group {
+    @include row();
+
+    label {
+      @include col("lg", 2);
+    }
+
+    input {
+      @include col("lg", 10);
+    }
+  }
+
+  &__receptionMonths, &__receptionWeeks {
+    margin: 1.5rem auto;
+
+    caption {
+      text-align: left;
+    }
+
+    tr {
+      border-bottom: 1px solid themeColor("dark");
+
+      &:first-child {
+        border-top: 1px solid themeColor("dark");
+      }
+    }
+
+    th, td {
+      width: 3rem;
+      height: 3rem;
+      border-right: 1px solid themeColor("dark");
+      text-align: center;
+
+      &:first-child {
+        border-left: 1px solid themeColor("dark");
+      }
+    }
+
+    td {
+      &[data-state="1"] {
+        background: rgba(128, 255, 128, .5);
+      }
+
+      &[data-state="2"] {
+        background: linear-gradient(-45deg, rgba(128, 255, 128, .5) 50%, rgba(255, 128, 128, .5) 51%);
+      }
+
+      &[data-state="3"] {
+        background: rgba(255, 128, 128, .5);
+      }
+
+      &[data-state="4"] {
+        background: linear-gradient(-45deg, rgba(255, 128, 128, .5) 50%, rgba(128, 255, 128, .5) 51%);
+      }
+    }
+  }
+
+  &__message {
+    margin: .75rem auto;
+    @include smallText();
+    text-align: center;
+    transition: opacity ease-in-out .5s;
+
+    &.--fade {
+      opacity: 0;
+    }
+  }
+}
+
 @keyframes blink {
   0% {
     opacity: 0;

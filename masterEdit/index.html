@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マスター編集 | 教育旅行ポータル | 越前海岸盛り上げ隊</title>
+    <link rel="stylesheet" href="../style.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="container">
+        <h1 class="title">越前海岸盛り上げ隊教育旅行ポータル</h1>
+        <main class="main">
+          <form class="form">
+            <div id="select" class="form__select">
+              <div class="form__group">
+                <label for="targetSelect">種別</label>
+                <select id="targetSelect" name="target">
+                  <option value="0">体験</option>
+                  <option value="1">施設</option>
+                </select>
+              </div>
+              <div class="form__group">
+                <label for="itemSelect">ID</label>
+                <select id="itemSelect" name="item"></select>
+              </div>
+            </div>
+            <div id="info" class="form__info"></div>
+            <template id="infoTemplate">
+              <div class="form__group">
+                <label></label>
+                <input type="text">
+              </div>
+            </template>
+            <div id="receptionMonths" class="form__receptionMonths">
+              <table>
+                <caption>月の空き状況: </caption>
+                <thead>
+                  <tr>
+                    <th>1月</th>
+                    <th>2月</th>
+                    <th>3月</th>
+                    <th>4月</th>
+                    <th>5月</th>
+                    <th>6月</th>
+                    <th>7月</th>
+                    <th>8月</th>
+                    <th>9月</th>
+                    <th>10月</th>
+                    <th>11月</th>
+                    <th>12月</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div id="receptionWeeks" class="form__receptionWeeks">
+              <table>
+                <caption>週の標準的な空き状況: </caption>
+                <thead>
+                  <tr>
+                    <th>日</th>
+                    <th>月</th>
+                    <th>火</th>
+                    <th>水</th>
+                    <th>木</th>
+                    <th>金</th>
+                    <th>土</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <input id="submit" type="submit" value="保存">
+            <p id="message" class="form__message"></p>
+          </form>
+        </main>
+      </div>
+    </div>
+    <script src="./init.js" type="module"></script>
+  </body>
+</html>

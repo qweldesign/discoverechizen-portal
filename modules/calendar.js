@@ -179,7 +179,7 @@ export default class Calendar {
   }
 
   _makeLargeBody(year, month) {
-    const data = window.masterData;
+    const data = this._options.items;
     const startDate = new Date(year, month); // 月の初日
     const startDay = startDate.getDay(); // 初日の曜日
     const endDate = new Date(year, month + 1,  0); // 月の末日
