@@ -68,14 +68,14 @@
             <section class="section" data-index="1">
               <div class="section__inner">
                 <h2 class="section__heading">越前海岸盛り上げ隊って？</h2>
-                <img class="section__image --lg" src="./assets/members.jpg">
+                <img class="section__image" src="./assets/members.jpg">
                 <p class="section__content">越前海岸盛り上げ隊は、越前海岸の「いま」をできるだけ面白くしようと奮闘する大人たちのゆるやかな集まりです。海鮮料理屋、旅館や民宿、クラゲ販売店、製粉屋、製塩所、林業家、ガラス作家、お坊さん、デザイナーやプログラマー、地域おこし協力隊など、30以上の事業者と個人が名を連ね、その時々でそれぞれにできることを差し出し合いながら、日々活動を続けています。</p>
               </div>
             </section>
             <section class="section" data-index="2">
               <div class="section__inner">
                 <h2 class="section__heading">越前海岸の学習プログラムで自由に研究しよう！</h2>
-                <img class="section__image --md" src="./assets/island.png">
+                <img class="section__image" src="./assets/island.png">
                 <p class="section__content">ここで仕事をしている人は、地域の暮らしに密着して過ごしています。彼らの仕事を知ることで社会への興味、地域の色を発見し、地域の「理解と学び」につなげます。体験を通して、越前海岸で働く人々や、作家さんによる想いにぜひ触れてみてください。私たちが企画から運営、当日のお世話まですべてプランニングします。</p>
               </div>
             </section>
@@ -85,6 +85,43 @@
             <section class="section" data-index="4">
               <video src="./assets/activity.mp4" controls></video>
             </section>
+            <section class="section" data-index="5">
+              <div class="section__inner">
+                <h2 class="section__heading">体験一覧</h2>
+                <div class="activitiesList">
+                  <table id="activitiesTable">
+                    <thead>
+                      <tr>
+                        <th>体験名</th>
+                        <th>運営事業者</th>
+                        <th>SDGsの観点</th>
+                        <th>定員</th>
+                        <th>所要時間</th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                    <template id="activitiesTableRowTemplate">
+                      <tr class="activitiesList__item">
+                        <td class="activitiesList__fullname"></td>
+                        <td class="activitiesList__company"></td>
+                        <td class="activitiesList__sdgs_summary"></td>
+                        <td class="activitiesList__capacity"></td>
+                        <td class="activitiesList__duration"></td>
+                      </tr>
+                    </template>
+                  </table>
+                </div>
+              </div>
+            </section>
+            <template id="sectionTemplate">
+              <section class="section">
+                <div class="section__inner">
+                  <h2 class="section__heading"></h2>
+                  <img class="section__image">
+                  <p class="section__content"></p>
+                </div>
+              </section>
+            </template>
           </div>
         </main>
       </div>

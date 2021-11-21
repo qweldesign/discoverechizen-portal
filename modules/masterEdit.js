@@ -118,14 +118,15 @@ export default class MasterEdit {
     this._form = document.getElementById('masterEdit');
     this._info = document.getElementById('info');
     this._template = document.getElementById('infoTemplate');
-    this.months = document.getElementById('receptionMonths');
+    this._message = document.getElementById('message');
+    this._months = document.getElementById('receptionMonths');
     this._weeks = document.getElementById('receptionWeeks');
     this._setForm(data);
 
     // 送信
     this._submit = document.getElementById('submit');
     this._isSubmitted = false;
-    this._message = document.getElementById('message');
+    this._saveMessage = document.getElementById('saveMessage');
     this._text = '保存ボタンを押してから閉じてください。';
     this._submit.addEventListener('click', this._submitHandler);
     this._promise.then(() => {
@@ -136,6 +137,7 @@ export default class MasterEdit {
   _setForm(data = {}) {
     this._setItemSelect(data);
     this._setInfo();
+    this._setMessage();
     this._setReceptionMonths();
     this._setReceptionWeeks();
   }
@@ -165,15 +167,15 @@ export default class MasterEdit {
     this._info.innerHTML = '';
     Object.keys(this._fields).forEach((key) => {
       // テンプレートをクローン
-      const node = document.importNode(this._template.content, true);
+      const clone = document.importNode(this._template.content, true);
 
       // label要素
-      const label = node.querySelector('label');
+      const label = clone.querySelector('label');
       label.setAttribute('for', key);
       label.textContent = this._fields[key];
 
       // input要素 [type="text"]
-      const input = node.querySelector('input');
+      const input = clone.querySelector('input');
       input.id = key;
       input.setAttribute('name', key);
       // データがあればセット
@@ -182,7 +184,7 @@ export default class MasterEdit {
       }
 
       // クローンを挿入
-      this._info.appendChild(node);
+      this._info.appendChild(clone);
 
       // イベントハンドラ
       input.addEventListener('change', this._changeSaveContentHandler);
@@ -192,8 +194,18 @@ export default class MasterEdit {
     });
   }
 
+  _setMessage() {
+    this._message.value = this._data.message;
+
+    // イベントハンドラ
+    this._message.addEventListener('click', this._changeSaveContentHandler);
+    this._promise.then(() => {
+      this._message.removeEventListener('click', this._changeSaveContentHandler);
+    });
+  }
+
   _setReceptionMonths() {
-    const elems = this.months.querySelectorAll('td');
+    const elems = this._months.querySelectorAll('td');
     elems.forEach((td, i) => {
       // データ属性をセット
       if (this._method === 'update') {
@@ -231,7 +243,7 @@ export default class MasterEdit {
   _changeSaveContent() {
     if (this._isSubmitted) {
       this._isSubmitted = false;
-      this._message.textContent = this._text;
+      this._saveMessage.textContent = this._text;
     }
   }
 
@@ -255,9 +267,13 @@ export default class MasterEdit {
       const val = elem.value;
       data.append(key, val);
     });
+
+    // メッセージ
+    const message = this._message.value;
+    data.append('message', message);
     
     // 月の予約状況デフォルト値
-    let elems = this.months.querySelectorAll('td');
+    let elems = this._months.querySelectorAll('td');
     elems.forEach((td, i) => {
       const key = `reception_month_${('00' + i).slice(-2)}`;
       const val = td.dataset.state;
@@ -288,11 +304,11 @@ export default class MasterEdit {
             this._itemSelect.appendChild(option);
             this._itemSelect.options[this._id].selected = true;
           }
-          this._transitionEnd(this._message, () => {
-            this._message.classList.add('--fade');
+          this._transitionEnd(this._saveMessage, () => {
+            this._saveMessage.classList.add('--fade');
           }).then(() => {
-            this._message.innerHTML = `保存されました。（<a href="../#${this._item}">トップへ戻る</a>）`;
-            this._message.classList.remove('--fade');
+            this._saveMessage.innerHTML = `保存されました。（<a href="../#${this._item}">トップへ戻る</a>）`;
+            this._saveMessage.classList.remove('--fade');
           });
         }
       });

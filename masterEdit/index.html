@@ -38,6 +38,10 @@
                 <input type="text">
               </div>
             </template>
+            <div id="messageArea" class="form__messageArea">
+              <label for="message">メッセージ</label>
+              <textarea id="message" name="message" cols="20" rows="8"></textarea>
+            </div>
             <div id="receptionMonths" class="form__receptionMonths">
               <table>
                 <caption>月の空き状況: </caption>
@@ -103,7 +107,7 @@
               </table>
             </div>
             <input id="submit" type="submit" value="保存">
-            <p id="message" class="form__message"></p>
+            <p id="saveMessage" class="form__message"></p>
           </form>
         </main>
       </div>

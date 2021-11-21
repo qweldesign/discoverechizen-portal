@@ -101,11 +101,13 @@ function makeFieldNameArr($target) {
       'sdgs_summary',
       'capacity',
       'duration',
+      'message'
     ],
     'facilities' => [
       'name',
       'fullname',
-      'capacity'
+      'capacity',
+      'message'
     ]
   ];
 
