@@ -14,22 +14,17 @@ export default class MasterEdit {
     // アイテムを変更したとき、ハッシュを更新
     this._targetSelect = document.getElementById('targetSelect');
     this._targetSelect.addEventListener('change', () => {
-      this._hashChange();
+      this._changeHash();
     });
     this._itemSelect = document.getElementById('itemSelect');
     this._itemSelect.addEventListener('change', () => {
-      this._hashChange();
+      this._changeHash();
     });
 
-    this._init();
-
-    // ハッシュを変更したとき、フォームを更新
-    window.addEventListener('hashchange', () => {
-      this._removeEventListeners();
-      this._promise.then(() => {
-        this._init();
-      });
-    });
+    // ハッシュを変更したとき(ハッシュが整数型の場合)、フォームを更新
+    window.addEventListener('hashchange', () => this.hashChangeHandler());
+    
+    this.init();
   }
 
   _addEventHandlers() {
@@ -47,7 +42,7 @@ export default class MasterEdit {
     };
   }
 
-  _hashChange() {
+  _changeHash() {
     // 選択値から新しいハッシュを作成
     const target = this._targetSelect.value - 0;
     const id = this._itemSelect.value - 0;
@@ -55,8 +50,19 @@ export default class MasterEdit {
     // ハッシュを更新
     location.hash = item;
   }
+  
+  hashChangeHandler() {
+    const hash = location.hash;
+    const index = hash.slice(1) - 0;
+    if (Number.isInteger(index)) {
+      this._removeEventListeners();
+      this._promise.then(() => {
+        this.init();
+      });
+    }
+  }
 
-  async _init() {
+  async init() {
     // マスターデータをfetch
     const res1 = await fetch(`${this._options.root}php/api.php?method=fetch&target=activities`);
     const activities = await res1.json();
@@ -112,7 +118,7 @@ export default class MasterEdit {
     this._form = document.getElementById('masterEdit');
     this._info = document.getElementById('info');
     this._template = document.getElementById('infoTemplate');
-    this._months = document.getElementById('receptionMonths');
+    this.months = document.getElementById('receptionMonths');
     this._weeks = document.getElementById('receptionWeeks');
     this._setForm(data);
 
@@ -187,7 +193,7 @@ export default class MasterEdit {
   }
 
   _setReceptionMonths() {
-    const elems = this._months.querySelectorAll('td');
+    const elems = this.months.querySelectorAll('td');
     elems.forEach((td, i) => {
       // データ属性をセット
       if (this._method === 'update') {
@@ -251,7 +257,7 @@ export default class MasterEdit {
     });
     
     // 月の予約状況デフォルト値
-    let elems = this._months.querySelectorAll('td');
+    let elems = this.months.querySelectorAll('td');
     elems.forEach((td, i) => {
       const key = `reception_month_${('00' + i).slice(-2)}`;
       const val = td.dataset.state;
@@ -285,7 +291,7 @@ export default class MasterEdit {
           this._transitionEnd(this._message, () => {
             this._message.classList.add('--fade');
           }).then(() => {
-            this._message.textContent = '保存されました。';
+            this._message.innerHTML = `保存されました。（<a href="../#${this._item}">トップへ戻る</a>）`;
             this._message.classList.remove('--fade');
           });
         }

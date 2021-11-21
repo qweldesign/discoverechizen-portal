@@ -40,7 +40,10 @@ export default class Modal {
       this._next.classList.add('--collapse');
     }
 
+    // イベント登録
     this._handleEvents();
+    // 現在のハッシュで初期化
+    this.hashChangeHandler();
   }
 
   _handleEvents() {
@@ -48,11 +51,15 @@ export default class Modal {
       elem.addEventListener('click', (event) => {
         event.preventDefault();
         if (this._isShown) {
-          this._hide();
+          // 元のハッシュに戻す
+          location.hash = this.id || 1;
         } else {
+          // 前のハッシュ(ID)を記憶
+          this.id = location.hash;
+          // 履歴を残しつつハッシュを変更
           const target = event.currentTarget;
           const index = target.dataset.target;
-          this._show(index);
+          location.hash = `section-${index}`;
         }
       });
     });
@@ -60,16 +67,40 @@ export default class Modal {
     this._slider.forEach((elem) => {
       elem.addEventListener('click', (event) => {
         event.preventDefault();
+        // 履歴を残しつつハッシュを変更
         const target = event.currentTarget;
         const size = target.dataset.slide;
-        this._slide(size);
+        const index = this.index + (size - 0);
+        this.history = location.hash;
+        location.hash = `section-${index}`;
       });
     });
+
+    // ハッシュを変更したとき(ハッシュから'section-'を除いた値が整数型の場合)、モーダルを切替
+    window.addEventListener('hashchange', () => this.hashChangeHandler());
   }
 
-  _show(index) {
-    this._index = index - 0;
-    const section = this._content.querySelector(`[data-index="${this._index}"`);
+  hashChangeHandler() {
+    const hash = location.hash;
+    const prefix = hash.slice(1, 8);
+    const index = hash.slice(9) - 0;
+    const historyPrefix = this.history ? this.history.slice(1, 8) : '';
+    const historyIndex = this.history ? this.history.slice(9) - 0 : '';
+    if (prefix === 'section' && Number.isInteger(index)) {
+      if (historyPrefix === 'section' && Number.isInteger(historyIndex)) {
+        this.move(index);
+      } else {
+        this.show(index);
+      }
+    } else if (historyPrefix === 'section' && Number.isInteger(historyIndex)) {
+      this.hide();
+    }
+    this.history = location.hash;
+  }
+
+  show(index) {
+    this.index = index - 0;
+    const section = this._content.querySelector(`[data-index="${this.index}"`);
     const clone = section.cloneNode(true);
     this._inner.appendChild(clone);
     this._transitionEnd(this._elem, () => {
@@ -82,12 +113,12 @@ export default class Modal {
       this._prev.classList.remove('--collapse');
       this._next.classList.remove('--collapse');
       this._video = clone.querySelector('video');
-      this._play();
+      this.play();
     });
     this._isShown = true;
   }
 
-  _hide() {
+  hide() {
     this._transitionEnd(this._inner, () => {
       this._inner.classList.add('--hide');
       this._overlay.classList.add('--hide');
@@ -99,15 +130,15 @@ export default class Modal {
       this._overlay.classList.add('--collapse');
       this._inner.innerHTML = '';
     });
-    this._parse();
+    this.parse();
     this._isShown = false;
   }
 
-  _slide(size) {
-    this._index = this._index + (size - 0);
-    const section = this._content.querySelector(`[data-index="${this._index}"`);
+  move(index) {
+    this.index = index - 0;
+    const section = this._content.querySelector(`[data-index="${this.index}"`);
     const clone = section.cloneNode(true);
-    this._parse();
+    this.parse();
     this._transitionEnd(this._inner, () => {
       this._inner.classList.add('--hide');
     }).then(() => {
@@ -115,18 +146,18 @@ export default class Modal {
       this._inner.appendChild(clone);
       this._inner.classList.remove('--hide');
       this._video = clone.querySelector('video');
-      this._play();
+      this.play();
     });
   }
 
-  _play() {
+  play() {
     if (this._video) {
       this._video.play();
       this._isPlayVideo = true;
     }
   }
 
-  _parse() {
+  parse() {
     if (this._isPlay) {
       this._video.parse();
       this._isPlayVideo = false;

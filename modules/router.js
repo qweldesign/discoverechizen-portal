@@ -7,7 +7,6 @@
 export default class Router {
   constructor() {
     const elems = document.querySelectorAll('.subMenu a');
-    console.log(elems);
     elems.forEach((elem) => {
       elem.addEventListener(('click'), (event) => {
         event.preventDefault();

@@ -7,8 +7,8 @@
 import Calendar from "./calendar.js";
 
 export default class CustomCalendar extends Calendar {
-  async _makeCalendar(year, month) {
-    super._makeCalendar(year, month);
+  async makeCalendar(year, month) {
+    super.makeCalendar(year, month);
     this._setStatus(year, month);
   }
 
@@ -16,21 +16,18 @@ export default class CustomCalendar extends Calendar {
     super._handleEvents();
 
     // アイテムの選択受付
-    const select = document.getElementById('select');
-    if (select) {
+    this._select = document.getElementById('select');
+    if (this._select) {
       // ハッシュと選択アイテムの初期化
-      this._init(select);
+      this.init();
 
       // アイテムを変更したとき、ハッシュを更新
-      select.addEventListener('change', () => {
-        location.hash = select.value;
+      this._select.addEventListener('change', () => {
+        location.hash = this._select.value;
       });
 
-      // ハッシュを変更したとき、カレンダーを更新
-      window.addEventListener('hashchange', () => {
-        this._init(select);
-        this._makeCalendar(this._year, this._month);
-      });
+      // ハッシュを変更したとき(ハッシュが整数型の場合)、カレンダーを更新
+      window.addEventListener('hashchange', () => this.hashChangeHandler());
     }
 
     // モードの選択受付
@@ -43,7 +40,16 @@ export default class CustomCalendar extends Calendar {
     this._body.addEventListener('click', (event) => this._cellClickHandler(event));
   }
 
-  _init(select) {
+  hashChangeHandler() {
+    const hash = location.hash;
+    const index = hash.slice(1) - 0;
+    if (this._select && Number.isInteger(index)) {
+      this.init();
+      this.makeCalendar(this.year, this.month);
+    }
+  }
+
+  init() {
     // ハッシュの初期化
     const hash = location.hash;
     if (!hash)　location.hash = '1';
@@ -53,9 +59,9 @@ export default class CustomCalendar extends Calendar {
       const option = document.createElement('option');
       option.setAttribute('value', dt.id);
       option.textContent = dt.name;
-      select.appendChild(option);
+      this._select.appendChild(option);
       // 選択の初期化
-      if (hash.slice(1) === dt.id) select.options[i].selected = true;
+      if (hash.slice(1) === dt.id) this._select.options[i].selected = true;
     });
   }
 

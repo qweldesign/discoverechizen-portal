@@ -29,11 +29,11 @@ export default class Calendar {
 
     // 現在年月を取得
     const today = new Date();
-    this._year = today.getFullYear();
-    this._month = today.getMonth();
+    this.year = today.getFullYear();
+    this.month = today.getMonth();
 
     // カレンダーを作成
-    this._makeCalendar(this._year, this._month);
+    this.makeCalendar(this.year, this.month);
 
     // 月送りの操作受付
     this._handleEvents();
@@ -43,27 +43,27 @@ export default class Calendar {
     // 前月
     this._prev.addEventListener('click', (event) => {
       event.preventDefault();
-      this._month--;
-      if (this._month < 0) {
-        this._year--;
-        this._month = this._months.length - 1; 
+      this.month--;
+      if (this.month < 0) {
+        this.year--;
+        this.month = this._months.length - 1; 
       }
-      this._makeCalendar(this._year, this._month);
+      this.makeCalendar(this.year, this.month);
     });
 
     // 次月
     this._next.addEventListener('click', (event) => {
       event.preventDefault();
-      this._month++;
-      if (this._month > this._months.length - 1) {
-        this._year++;
-        this._month = 0; 
+      this.month++;
+      if (this.month > this._months.length - 1) {
+        this.year++;
+        this.month = 0; 
       }
-      this._makeCalendar(this._year, this._month);
+      this.makeCalendar(this.year, this.month);
     });
   }
 
-  _makeCalendar(year, month) {
+  makeCalendar(year, month) {
     // テキストラベルを変更
     this._changeLabels(year, month);
 
