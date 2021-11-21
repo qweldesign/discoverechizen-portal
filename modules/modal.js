@@ -40,6 +40,9 @@ export default class Modal {
       this._next.classList.add('--collapse');
     }
 
+    const sections = document.querySelectorAll('[data-index]');
+    this.maxIndex = sections.length;
+
     // イベント登録
     this._handleEvents();
     // 現在のハッシュで初期化
@@ -72,7 +75,11 @@ export default class Modal {
         const size = target.dataset.slide;
         const index = this.index + (size - 0);
         this.history = location.hash;
-        location.hash = `section-${index}`;
+        if (index === 0 || index > this.maxIndex) {
+          location.hash = this.id || 1;
+        } else {
+          location.hash = `section-${index}`;
+        }
       });
     });
 
