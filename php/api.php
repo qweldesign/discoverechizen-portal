@@ -35,33 +35,39 @@ if ($method === 'fetch') {
   // JSON出力
   echo json_encode($result, JSON_UNESCAPED_UNICODE);
   return;
-}
 
-// ステータスの挿入
-if ($method === 'insert' && $target === 'status') {
-  if (isset($_POST['date']) && isset($_POST['item']) && isset($_POST['state'])) {
-    insertState($file, $_POST['date'], $_POST['item'], $_POST['state']); 
+} else {
+  // リファラ確認
+  $referer = $_SERVER['HTTP_REFERER'];
+  $url = parse_url($referer);
+  if (!stristr($url['host'], 'portal.discoverechizen.com')) return;
+
+  // ステータスの挿入
+  if ($method === 'insert' && $target === 'status') {
+    if (isset($_POST['date']) && isset($_POST['item']) && isset($_POST['state'])) {
+      insertState($file, $_POST['date'], $_POST['item'], $_POST['state']); 
+    }
+  
+    return;
   }
-
-  return;
-}
-
-// マスターの挿入
-if ($method === 'insert' && $target === 'master') {
-  if (isset($_POST['item'])) {
-    insertMaster($file, $_POST['item']);
+  
+  // マスターの挿入
+  if ($method === 'insert' && $target === 'master') {
+    if (isset($_POST['item'])) {
+      insertMaster($file, $_POST['item']);
+    }
+  
+    echo 'success';
+    return;
   }
-
-  echo 'success';
-  return;
-}
-
-// マスターの更新
-if ($method === 'update' && $target === 'master') {
-  if (isset($_POST['item'])) {
-    updateMaster($file, $_POST['item']);
+  
+  // マスターの更新
+  if ($method === 'update' && $target === 'master') {
+    if (isset($_POST['item'])) {
+      updateMaster($file, $_POST['item']);
+    }
+  
+    echo 'success';
+    return;
   }
-
-  echo 'success';
-  return;
 }
