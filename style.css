@@ -201,6 +201,7 @@ button, [type="button"], [type="reset"], [type="submit"] {
 .wrapper {
   width: 100%;
   padding: 1.5rem 0;
+  background: linear-gradient(-45deg, #80dfff, white, #80dfff);
 }
 
 .container {
@@ -208,9 +209,6 @@ button, [type="button"], [type="reset"], [type="submit"] {
   width: var(--container-base, 21rem);
   margin-left: auto;
   margin-right: auto;
-  border: 1.5rem solid #d9d9d9;
-  border-radius: 4.5rem;
-  background: linear-gradient(-45deg, #80dfff, white, #80dfff);
 }
 
 @media (min-width: 600px) {
@@ -407,6 +405,15 @@ button, [type="button"], [type="reset"], [type="submit"] {
           align-items: center;
 }
 
+.schedule__menuItem {
+  position: relative;
+  width: 100%;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  max-width: none;
+}
+
 @media (min-width: 1152px) {
   .schedule__menuItem {
     -webkit-box-flex: 0;
@@ -504,9 +511,28 @@ button, [type="button"], [type="reset"], [type="submit"] {
 
 .calendar__viewWrap {
   width: 100%;
-  min-height: 30rem;
-  padding: 0 1.5rem;
-  overflow-x: scroll;
+  height: 30rem;
+  overflow: scroll;
+}
+
+.calendar__viewWrap thead th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #d1f0fc;
+}
+
+.calendar__viewWrap tr th:first-child, .calendar__viewWrap tr td:first-child {
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background-color: #d1f0fc;
+}
+
+.calendar__viewWrap thead th:first-child {
+  z-index: 2;
 }
 
 .calendar__view {
@@ -619,7 +645,7 @@ button, [type="button"], [type="reset"], [type="submit"] {
   padding: 0 1.5rem;
   border: 4px solid #b3b3b3;
   border-radius: 1.5rem;
-  background: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .report__info {
@@ -636,7 +662,7 @@ button, [type="button"], [type="reset"], [type="submit"] {
 }
 
 .report__info tr:nth-of-type(odd) {
-  background: rgba(77, 77, 77, 0.15);
+  background-color: rgba(77, 77, 77, 0.15);
 }
 
 .report__info th {
@@ -928,6 +954,12 @@ button, [type="button"], [type="reset"], [type="submit"] {
 }
 
 .form__select .form__group {
+  position: relative;
+  width: 100%;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  max-width: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -950,6 +982,15 @@ button, [type="button"], [type="reset"], [type="submit"] {
   }
 }
 
+.form__select .form__group label {
+  position: relative;
+  width: 100%;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  max-width: none;
+}
+
 @media (min-width: 1152px) {
   .form__select .form__group label {
     -webkit-box-flex: 0;
@@ -957,6 +998,15 @@ button, [type="button"], [type="reset"], [type="submit"] {
             flex: 0 0 33.33333%;
     max-width: 33.33333%;
   }
+}
+
+.form__select .form__group select {
+  position: relative;
+  width: 100%;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  max-width: none;
 }
 
 @media (min-width: 1152px) {
@@ -979,6 +1029,15 @@ button, [type="button"], [type="reset"], [type="submit"] {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.form__group label {
+  position: relative;
+  width: 100%;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  max-width: none;
 }
 
 @media (min-width: 1152px) {
@@ -1012,6 +1071,15 @@ button, [type="button"], [type="reset"], [type="submit"] {
           align-items: center;
 }
 
+.form__messageArea label {
+  position: relative;
+  width: 100%;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  max-width: none;
+}
+
 @media (min-width: 1152px) {
   .form__messageArea label {
     -webkit-box-flex: 0;
@@ -1019,6 +1087,15 @@ button, [type="button"], [type="reset"], [type="submit"] {
             flex: 0 0 16.66667%;
     max-width: 16.66667%;
   }
+}
+
+.form__messageArea textarea {
+  position: relative;
+  width: 100%;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  max-width: none;
 }
 
 @media (min-width: 1152px) {

@@ -7,6 +7,19 @@
 export default class MasterEdit {
   constructor(options = {}) {
     this._options = options;
+
+    this._form = document.getElementById('masterEdit');
+    this._info = document.getElementById('info');
+    this._template = document.getElementById('infoTemplate');
+    this._message = document.getElementById('message');
+    this._months = document.getElementById('receptionMonths');
+    this._weeks = document.getElementById('receptionWeeks');
+    this._submit = document.getElementById('submit');
+    this._saveMessage = document.getElementById('saveMessage');
+
+    // 送信状態 初期状態はtrueで、フォームに変更を加えるとfalseになる
+    this._isSubmitted = true;
+    this._text = '保存ボタンを押してから閉じてください。';
     
     // イベントハンドラを登録 (thisの置き換え)
     this._addEventHandlers();
@@ -49,8 +62,8 @@ export default class MasterEdit {
     const item = id + target * 1000;
     // ハッシュを更新
     location.hash = item;
-    // 保存メッセージを表示
-    this._changeSaveContent();
+    // 保存メッセージを空にする
+    this._saveMessage.textContent = '';
   }
   
   hashChangeHandler() {
@@ -117,19 +130,9 @@ export default class MasterEdit {
       }
     ];
     this._fields = fields[this._target];   
-    this._form = document.getElementById('masterEdit');
-    this._info = document.getElementById('info');
-    this._template = document.getElementById('infoTemplate');
-    this._message = document.getElementById('message');
-    this._months = document.getElementById('receptionMonths');
-    this._weeks = document.getElementById('receptionWeeks');
     this._setForm(data);
 
     // 送信
-    this._submit = document.getElementById('submit');
-    this._isSubmitted = false;
-    this._saveMessage = document.getElementById('saveMessage');
-    this._text = '保存ボタンを押してから閉じてください。';
     this._submit.addEventListener('click', this._submitHandler);
     this._promise.then(() => {
       this._submit.removeEventListener('click', this._submitHandler);

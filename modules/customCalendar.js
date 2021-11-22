@@ -86,7 +86,7 @@ export default class CustomCalendar extends Calendar {
       // 月のデフォルト値
       let state = item[`reception_month_${('00' + month).slice(-2)}`] - 0;
       // 月のデフォルト値から空きがない場合
-      if (state === 3 || state === 2 && day > 15 || state === 4 && day <= 15) {
+      if (state === 3 || state === 2 && day <= 15 || state === 4 && day > 15) {
         state = 3;
       } else {
         // 週のデフォルト値
