@@ -29,32 +29,35 @@ export default class RenderItems {
 
     items.forEach((item) => {
       // Table row
-      const tableRowClone = document.importNode(this._tableRowTemplate.content, true);
-      Object.keys(fields).forEach((key) => {
-        const td = tableRowClone.querySelector(`.activitiesList__${key}`);
-        td.textContent = item[key];
-      });
-      this._table.appendChild(tableRowClone);
+      if (item.show_list - 0) {
+        const tableRowClone = document.importNode(this._tableRowTemplate.content, true);
+        Object.keys(fields).forEach((key) => {
+          const td = tableRowClone.querySelector(`.activitiesList__${key}`);
+          td.textContent = item[key];
+        });
+        this._table.appendChild(tableRowClone);
+      }
       
       // .section
-      const sectionClone = document.importNode(this._sectionTemplate.content, true);
-      const section = sectionClone.querySelector('.section');
-      section.dataset.index = startIndex++;
+      if (item.show_item - 0) {
+        const sectionClone = document.importNode(this._sectionTemplate.content, true);
+        const section = sectionClone.querySelector('.section');
+        section.dataset.index = startIndex++;
 
-      // .section__heading
-      const heading = sectionClone.querySelector('.section__heading');
-      heading.textContent = item.fullname;
+        // .section__heading
+        const heading = sectionClone.querySelector('.section__heading');
+        heading.textContent = item.fullname;
 
-      // .section__image
-      const image = sectionClone.querySelector('.section__image');
-      image.setAttribute('src', './assets/members.jpg');
+        // .section__image
+        const image = sectionClone.querySelector('.section__image');
+        image.setAttribute('src', `./assets/img${('00000' + (item.id * 10)).slice(-5)}.jpg`);
 
-      // .section__content
-      const content = sectionClone.querySelector('.section__content');
-      content.textContent = item.message;
+        // .section__content
+        const content = sectionClone.querySelector('.section__content');
+        content.textContent = item.message;
 
-      this._section.appendChild(sectionClone);
-
+        this._section.appendChild(sectionClone);
+      }
     });
   }
 }

@@ -822,7 +822,7 @@ button, [type="button"], [type="reset"], [type="submit"] {
   display: block;
   width: auto;
   height: 16rem;
-  margin: auto;
+  margin: .75rem auto;
 }
 
 .section__content {

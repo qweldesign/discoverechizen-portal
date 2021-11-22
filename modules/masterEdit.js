@@ -49,6 +49,8 @@ export default class MasterEdit {
     const item = id + target * 1000;
     // ハッシュを更新
     location.hash = item;
+    // 保存メッセージを表示
+    this._changeSaveContent();
   }
   
   hashChangeHandler() {
