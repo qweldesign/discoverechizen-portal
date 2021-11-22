@@ -256,7 +256,7 @@ export default class MasterEdit {
     const target = event.currentTarget;
     let state = target.dataset.state;
     state++;
-    state = state % 5;
+    state = state % 9;
     target.dataset.state = state;
     this._changeSaveContent();
   }

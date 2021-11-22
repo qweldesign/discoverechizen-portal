@@ -21,7 +21,7 @@
 .wrapper {
   width: 100%;
   padding: 1.5rem 0;
-  background: linear-gradient(-45deg, themeColor("primary-light"), themeColor("lightest"), themeColor("primary-light"));
+  background: linear-gradient(135deg, themeColor("primary-light"), themeColor("lightest"), themeColor("primary-light"));
 }
 
 .container {
@@ -231,24 +231,6 @@
       display: block;
       background-color: rgba(themeColor('dark'), .3);
       text-decoration: none;
-    }
-
-    td {
-      &[data-state="1"] {
-        background: rgba(128, 255, 128, .5);
-      }
-
-      &[data-state="2"] {
-        background: linear-gradient(-45deg, rgba(128, 255, 128, .5) 50%, rgba(255, 128, 128, .5) 51%);
-      }
-
-      &[data-state="3"] {
-        background: rgba(255, 128, 128, .5);
-      }
-
-      &[data-state="4"] {
-        background: linear-gradient(-45deg, rgba(255, 128, 128, .5) 50%, rgba(128, 255, 128, .5) 51%);
-      }
     }
 
     &.--small {
@@ -591,24 +573,6 @@
         border-left: 1px solid themeColor("dark");
       }
     }
-
-    td {
-      &[data-state="1"] {
-        background: rgba(128, 255, 128, .5);
-      }
-
-      &[data-state="2"] {
-        background: linear-gradient(-45deg, rgba(128, 255, 128, .5) 50%, rgba(255, 128, 128, .5) 51%);
-      }
-
-      &[data-state="3"] {
-        background: rgba(255, 128, 128, .5);
-      }
-
-      &[data-state="4"] {
-        background: linear-gradient(-45deg, rgba(255, 128, 128, .5) 50%, rgba(128, 255, 128, .5) 51%);
-      }
-    }
   }
 
   &__message {
@@ -620,6 +584,44 @@
     &.--fade {
       opacity: 0;
     }
+  }
+}
+
+td {
+  &[data-state="0"] {
+    background: rgba(128, 255, 128, .5);
+  }
+
+  &[data-state="1"] {
+    background: linear-gradient(135deg, rgba(128, 255, 128, .5) 50%, rgba(255, 255, 128, .5) 51%);
+  }
+
+  &[data-state="2"] {
+    background: linear-gradient(135deg, rgba(128, 255, 128, .5) 50%, rgba(255, 128, 128, .5) 51%);
+  }
+
+  &[data-state="3"] {
+    background: linear-gradient(135deg, rgba(255, 255, 128, .5) 50%, rgba(128, 255, 128, .5) 51%);
+  }
+
+  &[data-state="4"] {
+    background: rgba(255, 255, 128, .5);
+  }
+
+  &[data-state="5"] {
+    background: linear-gradient(135deg, rgba(255, 255, 128, .5) 50%, rgba(255, 128, 128, .5) 51%);
+  }
+
+  &[data-state="6"] {
+    background: linear-gradient(135deg, rgba(255, 128, 128, .5) 50%, rgba(128, 255, 128, .5) 51%);
+  }
+
+  &[data-state="7"] {
+    background: linear-gradient(135deg, rgba(255, 128, 128, .5) 50%, rgba(255, 255, 128, .5) 51%);
+  }
+
+  &[data-state="8"] {
+    background: rgba(255, 128, 128, .5);
   }
 }
 

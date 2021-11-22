@@ -86,8 +86,8 @@ export default class CustomCalendar extends Calendar {
       // 月のデフォルト値
       let state = item[`reception_month_${('00' + month).slice(-2)}`] - 0;
       // 月のデフォルト値から空きがない場合
-      if (state === 3 || state === 2 && day <= 15 || state === 4 && day > 15) {
-        state = 3;
+      if (day <= 15 && state >= 6 || day > 15 && state % 3 === 2) {
+        state = 8;
       } else {
         // 週のデフォルト値
         const week = td.dataset.week;
@@ -134,7 +134,7 @@ export default class CustomCalendar extends Calendar {
 
     let state = target.dataset.state;
     state++;
-    state = state % 5;
+    state = state % 9;
     target.dataset.state = state;
 
     if (date && state) {

@@ -201,7 +201,7 @@ button, [type="button"], [type="reset"], [type="submit"] {
 .wrapper {
   width: 100%;
   padding: 1.5rem 0;
-  background: linear-gradient(-45deg, #80dfff, white, #80dfff);
+  background: linear-gradient(135deg, #80dfff, white, #80dfff);
 }
 
 .container {
@@ -571,22 +571,6 @@ button, [type="button"], [type="reset"], [type="submit"] {
   display: block;
   background-color: rgba(128, 128, 128, 0.3);
   text-decoration: none;
-}
-
-.calendar__view td[data-state="1"] {
-  background: rgba(128, 255, 128, 0.5);
-}
-
-.calendar__view td[data-state="2"] {
-  background: linear-gradient(-45deg, rgba(128, 255, 128, 0.5) 50%, rgba(255, 128, 128, 0.5) 51%);
-}
-
-.calendar__view td[data-state="3"] {
-  background: rgba(255, 128, 128, 0.5);
-}
-
-.calendar__view td[data-state="4"] {
-  background: linear-gradient(-45deg, rgba(255, 128, 128, 0.5) 50%, rgba(128, 255, 128, 0.5) 51%);
 }
 
 .calendar__view.--small {
@@ -1134,22 +1118,6 @@ button, [type="button"], [type="reset"], [type="submit"] {
   border-left: 1px solid gray;
 }
 
-.form__receptionMonths td[data-state="1"], .form__receptionWeeks td[data-state="1"] {
-  background: rgba(128, 255, 128, 0.5);
-}
-
-.form__receptionMonths td[data-state="2"], .form__receptionWeeks td[data-state="2"] {
-  background: linear-gradient(-45deg, rgba(128, 255, 128, 0.5) 50%, rgba(255, 128, 128, 0.5) 51%);
-}
-
-.form__receptionMonths td[data-state="3"], .form__receptionWeeks td[data-state="3"] {
-  background: rgba(255, 128, 128, 0.5);
-}
-
-.form__receptionMonths td[data-state="4"], .form__receptionWeeks td[data-state="4"] {
-  background: linear-gradient(-45deg, rgba(255, 128, 128, 0.5) 50%, rgba(128, 255, 128, 0.5) 51%);
-}
-
 .form__message {
   margin: .75rem auto;
   font-size: 87.5%;
@@ -1162,6 +1130,42 @@ button, [type="button"], [type="reset"], [type="submit"] {
 
 .form__message.--fade {
   opacity: 0;
+}
+
+td[data-state="0"] {
+  background: rgba(128, 255, 128, 0.5);
+}
+
+td[data-state="1"] {
+  background: linear-gradient(135deg, rgba(128, 255, 128, 0.5) 50%, rgba(255, 255, 128, 0.5) 51%);
+}
+
+td[data-state="2"] {
+  background: linear-gradient(135deg, rgba(128, 255, 128, 0.5) 50%, rgba(255, 128, 128, 0.5) 51%);
+}
+
+td[data-state="3"] {
+  background: linear-gradient(135deg, rgba(255, 255, 128, 0.5) 50%, rgba(128, 255, 128, 0.5) 51%);
+}
+
+td[data-state="4"] {
+  background: rgba(255, 255, 128, 0.5);
+}
+
+td[data-state="5"] {
+  background: linear-gradient(135deg, rgba(255, 255, 128, 0.5) 50%, rgba(255, 128, 128, 0.5) 51%);
+}
+
+td[data-state="6"] {
+  background: linear-gradient(135deg, rgba(255, 128, 128, 0.5) 50%, rgba(128, 255, 128, 0.5) 51%);
+}
+
+td[data-state="7"] {
+  background: linear-gradient(135deg, rgba(255, 128, 128, 0.5) 50%, rgba(255, 255, 128, 0.5) 51%);
+}
+
+td[data-state="8"] {
+  background: rgba(255, 128, 128, 0.5);
 }
 
 @-webkit-keyframes blink {
