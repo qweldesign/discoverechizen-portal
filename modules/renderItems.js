@@ -49,8 +49,17 @@ export default class RenderItems {
         heading.textContent = item.fullname;
 
         // .section__image
-        const image = sectionClone.querySelector('.section__image');
-        image.setAttribute('src', `./assets/img${('00000' + (item.id * 10)).slice(-5)}.jpg`);
+        if (item.id - 0 === 4 || item.id - 0 === 5 || item.id - 0 === 7) {
+          const image = sectionClone.querySelector('.section__image');
+          image.classList.add('--hide');
+          const video = sectionClone.querySelector('.section__video');
+          video.setAttribute('src', `./assets/video${('00000' + (item.id * 10)).slice(-5)}.mp4`);
+        } else {
+          const image = sectionClone.querySelector('.section__image');
+          image.setAttribute('src', `./assets/img${('00000' + (item.id * 10)).slice(-5)}.jpg`);
+          const video = sectionClone.querySelector('.section__video');
+          video.classList.add('--hide');
+        }
 
         // .section__content
         const content = sectionClone.querySelector('.section__content');

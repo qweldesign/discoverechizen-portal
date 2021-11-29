@@ -456,21 +456,26 @@
     text-align: center;
   }
 
-  &__image {
+  &__image, &__video {
     display: block;
     width: auto;
     height: 16rem;
     margin: .75rem auto;
+
+    &.--lg {
+      width: 100%;
+      height: auto;
+      margin: 0;
+    }
+
+    &.--hide {
+      display: none;
+    }
   }
 
   &__content {
     width: 48rem;
     margin: auto;
-  }
-
-  video {
-    width: 100%;
-    height: auto;
   }
 }
 
