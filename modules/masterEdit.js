@@ -118,6 +118,7 @@ export default class MasterEdit {
         'name': '体験略名',
         'fullname': '正式名称',
         'company': '運営事業者',
+        'tel': '電話番号',
         'type': '種類',
         'sdgs_summary': 'SDGsの観点',
         'capacity': '定員',
@@ -126,6 +127,8 @@ export default class MasterEdit {
       {
         'name': '施設略名',
         'fullname': '正式名称',
+        'tel': '電話番号',
+        'area': '地区',
         'capacity': '収容人数',
       }
     ];
