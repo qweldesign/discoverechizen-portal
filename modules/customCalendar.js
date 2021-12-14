@@ -137,7 +137,7 @@ export default class CustomCalendar extends Calendar {
     state = state % 9;
     target.dataset.state = state;
 
-    if (date && state) {
+    if (date) {
       const postData = new FormData;
       postData.set('date', date);
       postData.set('item', item);
