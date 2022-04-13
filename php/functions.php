@@ -28,7 +28,7 @@ function executeQuery($file, $sql, $options = []) {
 function fetchStatus($file, $year, $month) {
   $sql = "SELECT * FROM v_status WHERE substr(date, 1, 7) = :date";
   $options = [
-    ':date' => $year . '-' . $month
+    ':date' => $year . '-' . sprintf('%02d', $month)
   ];
 
   return executeQuery($file, $sql, $options);
